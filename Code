@@ -20,16 +20,16 @@ partition.tree(treefit,ordvars=c("Longitude","Latitude"),add=TRUE)
 summary(treefit)
 
 ## Summary of treefit tree
-  Regression tree:
-  tree(formula = log(MedianHouseValue) ~ Longitude + Latitude, 
-      data = x)
-  Number of terminal nodes:  12 
-  Residual mean deviance:  0.1662 = 3429 / 20630 
-  Distribution of residuals:
-      Min.  1st Qu.   Median     Mean 
-  -2.75900 -0.26080 -0.01359  0.00000 
-   3rd Qu.     Max. 
-   0.26310  1.84100 
+## Regression tree:
+## tree(formula = log(MedianHouseValue) ~ Longitude + Latitude, 
+##  data = x)
+## Number of terminal nodes:  12 
+## Residual mean deviance:  0.1662 = 3429 / 20630 
+## Distribution of residuals:
+##  Min.  1st Qu.   Median     Mean 
+## -2.75900 -0.26080 -0.01359  0.00000 
+## 3rd Qu.     Max. 
+## 0.26310  1.84100 
 
 ## Regression tree for predicting California housing prices from geographic coordinates allowing splits for smaller reductions in error
 treefit2=tree(log(MedianHouseValue) ~ Longitude+Latitude, data=x, mindev=0.001)
@@ -43,14 +43,14 @@ partition.tree(treefit2,ordvars=c("Longitude","Latitude"),add=TRUE,cex=0.3)
 summary(treefit2)
 
 ## Summary of treefit2 tree
-  Regression tree:
-  tree(formula = log(MedianHouseValue) ~ Longitude + Latitude, 
-      data = x, mindev = 0.001)
-  Number of terminal nodes:  68 
-  Residual mean deviance:  0.1052 = 2164 / 20570 
-  Distribution of residuals:
-      Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-  -2.94700 -0.19790 -0.01872  0.00000  0.19970  1.60600 
+## Regression tree:
+## tree(formula = log(MedianHouseValue) ~ Longitude + Latitude, 
+##  data = x, mindev = 0.001)
+## Number of terminal nodes:  68 
+## Residual mean deviance:  0.1052 = 2164 / 20570 
+## Distribution of residuals:
+##  Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.94700 -0.19790 -0.01872  0.00000  0.19970  1.60600 
 
 ## Regression tree for log price when all other features are included as (potential) inputs
 treefit3 <- tree(log(MedianHouseValue) ~., data=x)
@@ -60,15 +60,15 @@ text(treefit3, cex=0.5, digits=3)
 summary(treefit3)
 
 ## Summary of treefit3 tree
-  Regression tree:
-  tree(formula = log(MedianHouseValue) ~ ., data = x)
-  Variables actually used in tree construction:
-  [1] "MedianIncome"   "Latitude"       "Longitude"      "MedianHouseAge"
-  Number of terminal nodes:  15 
-  Residual mean deviance:  0.1321 = 2724 / 20620 
-  Distribution of residuals:
-      Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-  -2.86000 -0.22650 -0.01475  0.00000  0.20740  2.03900 
+## Regression tree:
+## tree(formula = log(MedianHouseValue) ~ ., data = x)
+## Variables actually used in tree construction:
+## [1] "MedianIncome"   "Latitude"       "Longitude"      "MedianHouseAge"
+## Number of terminal nodes:  15 
+## Residual mean deviance:  0.1321 = 2724 / 20620 
+## Distribution of residuals:
+##  Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.86000 -0.22650 -0.01475  0.00000  0.20740  2.03900 
 
 ## Predicted prices for the treefit3 model. Same color scale as in previous plots (where dots indicated actual prices)
 cut.predictions = cut(predict(treefit3),log(price.deciles),include.lowest=TRUE)
